@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Function Scope Example</title>
+    </head>
+
+    <body>
+        <script>
+            let x = 1;
+
+            function a() {
+                let y = 2;
+                output(y);
+            }
+
+            function b() {
+                let z = 3;
+                output(z);
+            }
+
+            function output(value) {
+                let para = document.createElement('p');
+                document.body.appendChild(para);
+                para.textContent = 'Value: ' + value;
+            }
+        </script>
+    </body>
+</html>

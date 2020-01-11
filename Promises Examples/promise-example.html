@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8">
+        <title>Promises Example</title>
+    </head>
+
+    <body>
+        <script>
+            let promise = fetch('coffee.jpg');
+            let promise2 = promise.then(response => response.blob());
+            let promise3 = promise2.then(myBlob => {
+                let objectUrl = URL.createObjectURL(myBlob);
+                let image = document.createElement('img');
+                image.src = objectUrl;
+                document.body.appendChild(image);
+            });
+            let errorCase = promise3.catch(e => {
+                console.log('There has been a problem with your fetch operation: ' + e.message);
+            });
+
+            /* Shorthand way of writing above code
+                fetch('coffee.jpg')
+                .then(response => response.blob())
+                .then(myBlob => {
+                   let objectUrl = URL.createObjectURL(myBlob);
+                    let image = document.createElement('img');
+                    image.src = objectUrl;
+                    document.body.appendChild(image); 
+                })
+                .catch(e => {
+                    console.log('There has been a problem with your fetch operation: ' + e.message);  
+                });
+            */
+        </script>
+    </body>
+</html>
